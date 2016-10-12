@@ -8,12 +8,7 @@ To run app (npm start):
 For Unit test case (npm test):
  For E2E Testing (npm run e2e):
 
-Few Features:
+Brief description:
 
-> Simple Checkin Form 
-> Based on Angular 2
-> Using reactive forms
-> Unit test cases using Jasmine (WIP)
-> E2E using protractor
-> Responive UI
-> Validation done
+Its is simple checkin form based on Angular 2 .It is using reactive forms .Unit test cases using Jasmine (WIP) &E2E using protractor
+.It also having responive UI and all validations done
