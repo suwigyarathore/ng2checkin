@@ -1,0 +1,30 @@
+.checkin
+{
+    border-radius: 0px;
+    border-color: lightgray;
+}
+
+.checkin-heading
+{  
+    background: url(http://media.istockphoto.com/photos/navy-blue-background-picture-id538526603?k=6&m=538526603&s=170667a&w=0&h=EN2drOYJd9E_weGfQqTv9mgVzHg3v66e3n4LBV3NSV4=);
+    background-size: 100%;
+    border-radius: 0px
+}
+
+.checkin-submit-btn
+{
+    border-radius: 0px;
+    background-color: #d70c17;
+    border-color: #d70c17;
+}
+
+.checkin-main-heading
+{
+    font-size: 30PX;
+    font-weight: bold;
+}
+
+.checkin-error{
+    color: red;
+}
+

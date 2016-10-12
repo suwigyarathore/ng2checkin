@@ -1,37 +1,47 @@
 /* tslint:disable:no-unused-variable */
 import { AppComponent } from './app.component';
 
-import { TestBed }      from '@angular/core/testing';
+import {async , TestBed }      from '@angular/core/testing';
 
 import { By }           from '@angular/platform-browser';
 
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+
 ////////  SPECS  /////////////
 
-/// Delete this
-describe('Smoke test', () => {
-  it('should run a passing test', () => {
-    expect(true).toEqual(true, 'should pass');
+beforeEach(() => {
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+  TestBed.configureTestingModule({
+    declarations: [
+      AppComponent
+    ],
+    imports: [
+      FormGroup, FormControl, FormBuilder, Validators
+      // HttpModule, etc.
+    ],
+    providers: [
+      // { provide: ServiceA, useClass: TestServiceA }
+    ]
   });
 });
 
-describe('AppComponent with TCB', function () {
-  beforeEach(() => {
-    TestBed.configureTestingModule({declarations: [AppComponent]});
-  });
+it('should do something', async(() => {
+    // Overrides here, if you need them
+    TestBed.compileComponents().then(() => {
+    const fixture = TestBed.createComponent(AppComponent);
 
-  it('should instantiate component', () => {
-    let fixture = TestBed.createComponent(AppComponent);
-    expect(fixture.componentInstance instanceof AppComponent).toBe(true, 'should create AppComponent');
-  });
+    // Access the dependency injected component instance
+    const app = fixture.componentInstance;
 
-  it('should have expected <h1> text', () => {
-    let fixture = TestBed.createComponent(AppComponent);
+    expect(app).toBeDefined();
+
+    // Access the element
+    const element = fixture.nativeElement;
+
+    // Detect changes as necessary
     fixture.detectChanges();
 
-    let h1 = fixture.debugElement.query(el => el.name === 'h1').nativeElement;  // it works
-
-        h1 = fixture.debugElement.query(By.css('h1')).nativeElement;            // preferred
-
-    expect(h1.innerText).toMatch(/angular app/i, '<h1> should say something about "Angular App"');
+    expect(element.textContent).toContain('something');
   });
-});
+}));
+
