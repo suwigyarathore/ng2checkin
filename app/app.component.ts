@@ -24,9 +24,7 @@ export class AppComponent {
   onCheckinDetailsSubmit(){
     console.log('KLM Checkin: Checkin Form Submitted'); 
     this.bookingCode = this.checkinForm.controls['bookingcode']['value'];
-    this.familyName = this.checkinForm.controls['familyname']['value'];
-    console.log(this.bookingCode);
-    
+    this.familyName = this.checkinForm.controls['familyname']['value']    
   }
   
 }
