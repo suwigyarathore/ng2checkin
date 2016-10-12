@@ -1,47 +1,51 @@
 /* tslint:disable:no-unused-variable */
 import { AppComponent } from './app.component';
+import {BookingService} from './booking.service'
 
-import {async , TestBed }      from '@angular/core/testing';
+import { TestBed }      from '@angular/core/testing';
 
 import { By }           from '@angular/platform-browser';
 
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import {  FormBuilder, Validators } from '@angular/forms';
 
 ////////  SPECS  /////////////
 
-beforeEach(() => {
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
-  TestBed.configureTestingModule({
-    declarations: [
-      AppComponent
-    ],
-    imports: [
-      FormGroup, FormControl, FormBuilder, Validators
-      // HttpModule, etc.
-    ],
-    providers: [
-      // { provide: ServiceA, useClass: TestServiceA }
-    ]
-  });
-});
+describe('App Comp', () => {
+    let formBuilder:FormBuilder;
+    let ap:AppComponent;
+    let bookingService:BookingService
 
-it('should do something', async(() => {
-    // Overrides here, if you need them
-    TestBed.compileComponents().then(() => {
-    const fixture = TestBed.createComponent(AppComponent);
+    beforeEach(() => {
+       formBuilder = new FormBuilder();
+       ap = new AppComponent(formBuilder,bookingService);
+       bookingService = new BookingService();
+       ap.ngOnInit();
+    });
 
-    // Access the dependency injected component instance
-    const app = fixture.componentInstance;
+    it('should define AppComponent ', () => {
+        expect(ap).toBeDefined();
+    });
 
-    expect(app).toBeDefined();
+    it('should define the checkin form ', () => {
+        expect(ap.checkinForm).toBeDefined();
+    });
 
-    // Access the element
-    const element = fixture.nativeElement;
+     it('form fields should be empty ', () => {
+        ap.onCheckinDetailsSubmit();
+        expect(ap.bookingCode).toEqual('');
+        expect(ap.familyName).toEqual('');
+    });
 
-    // Detect changes as necessary
-    fixture.detectChanges();
+     it('form fields should be filled with default value ', () => {
+        ap.onCheckinDetailsSubmit();
+        ap.checkinForm = formBuilder.group({
+            bookingcode: ['BKG123', Validators.required],
+            familyname: ['Rathore', Validators.required],
+         });
+        ap.onCheckinDetailsSubmit();
+        expect(ap.bookingCode).toEqual('BKG123');
+        expect(ap.familyName).toEqual('Rathore');
+    });
 
-    expect(element.textContent).toContain('something');
-  });
-}));
+})
 
