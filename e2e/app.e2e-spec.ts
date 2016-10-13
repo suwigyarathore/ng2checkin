@@ -58,34 +58,6 @@ describe('KLM Checkin form validation error message spec suit', function () {
 });
 
 
-describe('KLM Checkin success message after form submission', function () {
-
-  beforeEach(function () {
-    browser.get('');
-  });
-
-  it('should show success message after submitting valid form', function () {   
-    element(By.name('bookingcode')).sendKeys('BKG123');
-    element(By.name('familyname')).sendKeys('rathore');
-    element(by.className('checkin-submit-btn')).click();
-    expect(element(by.className('alert-success')).isPresent()).toBe(true);
-  });
-
-  it('should show entered booking id in success message after submitting valid form', function () {   
-    element(By.name('bookingcode')).sendKeys('BKG123');
-    element(By.name('familyname')).sendKeys('rathore');
-    element(by.className('checkin-submit-btn')).click();
-    expect(element(by.className('successBookingCode')).getText()).toContain('BKG123');
-  });
-
-   it('should show entered family name in success message after submitting valid form', function () {   
-    element(By.name('bookingcode')).sendKeys('BKG123');
-    element(By.name('familyname')).sendKeys('rathore');
-    element(by.className('checkin-submit-btn')).click();
-    expect(element(by.className('successFamilyName')).getText()).toContain('rathore');
-  });
 
 
 
-
-});

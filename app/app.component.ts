@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {BookingService} from './booking.service'
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'my-app',
@@ -11,10 +12,9 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 export class AppComponent {
 
   checkinForm: FormGroup;
-  bookingCode: string = "";
-  familyName: string = "";
+  
 
-  constructor(private formBuilder: FormBuilder , private bookingService: BookingService) {}
+  constructor(private formBuilder: FormBuilder , private bookingService: BookingService,private router:Router ) {}
 
   ngOnInit() {
     this.checkinForm = this.formBuilder.group({
@@ -33,10 +33,9 @@ export class AppComponent {
   onCheckinDetailsSubmit(){ 
     
     if(this.bookingService.retreiveBooking(this.checkinForm.controls['bookingcode']['value'],this.checkinForm.controls['familyname']['value'])){
-       this.bookingCode = this.checkinForm.controls['bookingcode']['value'];
-       this.familyName = this.checkinForm.controls['familyname']['value'];
+      this.router.navigate(['/bookinginfo', this.checkinForm.controls['bookingcode']['value'],this.checkinForm.controls['familyname']['value']]);  
     }
     
   }
   
-}
+} 

@@ -1,7 +1,4 @@
-<div class="alert alert-dismissible alert-success " [ngClass]="{ 'hidden': !bookingCode || !familyName}">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <strong class="successFamilyName">Congratulations <span [innerHTML]="familyName"></span>!</strong> You successfully retrieved your booking with Booking Id   <b class="successBookingCode">(<span [innerHTML]="bookingCode"></span>)</b>
-</div>
+
 
 
 <div class="panel panel-info checkin">
@@ -12,7 +9,7 @@
     
     <h2 class="text-center checkin-main-heading">RETRIEVE YOUR BOOKING</h2>
     <h4 class="text-center">You can find your booking by filling out your family name and the booking code in your booking confirmation.</h4>
-    <form [formGroup]="checkinForm" (ngSubmit)="onCheckinDetailsSubmit()" >
+    <form [formGroup]="checkinForm"  >
       <div class="form-group" [ngClass]="{ 'has-error': checkinForm.controls.bookingcode.errors && checkinForm.controls.bookingcode.touched }">
         <label class="control-label" >Booking code</label>
         <input type="text" class="form-control"  formControlName="bookingcode" name="bookingcode" >
@@ -23,7 +20,7 @@
         <input type="text" class="form-control" formControlName="familyname" name="familyname">
         <span class="help-block checkin-error" name="familynameerrormsg" *ngIf="checkinForm.controls.familyname.errors && checkinForm.controls.familyname.touched" >Family name is required.</span>
       </div>
-      <button type="submit" [disabled]="!checkinForm.valid" class="btn  btn-block btn-danger checkin-submit-btn" >
+      <button type="button" [disabled]="!checkinForm.valid" class="btn  btn-block btn-danger checkin-submit-btn" (click)="onCheckinDetailsSubmit()" >
         Retrieve booking
       </button>
     </form>
