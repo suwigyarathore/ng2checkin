@@ -10,7 +10,7 @@ import {  FormBuilder, Validators } from '@angular/forms';
 
 ////////  SPECS  /////////////
 
-describe('App Comp', () => {
+describe('Testing AppComponent Checkin Form', () => {
     let formBuilder:FormBuilder;
     let ap:AppComponent;
     let bookingService:BookingService
@@ -30,13 +30,13 @@ describe('App Comp', () => {
         expect(ap.checkinForm).toBeDefined();
     });
 
-     it('form fields should be empty ', () => {
+     it('should have empty fields on blank submission ', () => {
         ap.onCheckinDetailsSubmit();
         expect(ap.bookingCode).toEqual('');
         expect(ap.familyName).toEqual('');
     });
 
-     it('form fields should be filled with default value ', () => {
+     it('should populate with default fields ', () => {
        
         ap.checkinForm = formBuilder.group({
             bookingcode: ['BKG123', Validators.required],
@@ -47,18 +47,8 @@ describe('App Comp', () => {
         expect(ap.familyName).toEqual('Rathore');
     });
 
-     it('form fields should be filled with default value ', () => {
-      
-        ap.checkinForm = formBuilder.group({
-            bookingcode: ['BKG123', Validators.required],
-            familyname: ['Rathore', Validators.required],
-         });
-        ap.onCheckinDetailsSubmit();
-        expect(ap.bookingCode).toEqual('BKG123');
-        expect(ap.familyName).toEqual('Rathore');
-    });
 
-    it('form should be in invalid state with blank booking ID' , () => {
+    it('should be in invalid state with blank booking ID' , () => {
       
         ap.checkinForm = formBuilder.group({
             bookingcode: ['', Validators.required],
@@ -68,7 +58,7 @@ describe('App Comp', () => {
 
     });
 
-     it('form should be in invalid state with blank  family name' , () => {
+     it('should be in invalid state with blank  family name' , () => {
       
         ap.checkinForm = formBuilder.group({
             bookingcode: ['BKG123', Validators.required],
@@ -78,7 +68,7 @@ describe('App Comp', () => {
 
     });
 
-     it('form should be in invalid state with both blank fields' , () => {
+     it('should be in invalid state with both blank fields' , () => {
       
         ap.checkinForm = formBuilder.group({
             bookingcode: ['', Validators.required],
@@ -88,7 +78,7 @@ describe('App Comp', () => {
 
     });
 
-     it('form should be in valid state with both fields filled' , () => {
+     it('should be in valid state with both fields filled' , () => {
       
         ap.checkinForm = formBuilder.group({
             bookingcode: ['BKG123', Validators.required],
