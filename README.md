@@ -10,5 +10,5 @@ For Unit test case (npm test):
 
 Brief description:
 
-Its is simple checkin form based on Angular 2 .It is using reactive forms .Unit test cases using Jasmine (WIP) &E2E using protractor
+Its is simple checkin form based on Angular 2 .It is using reactive forms .Unit test cases using Jasmine & E2E using protractor
 .It also having responive UI and all validations done
