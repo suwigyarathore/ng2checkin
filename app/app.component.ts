@@ -21,6 +21,13 @@ export class AppComponent {
       bookingcode: ['', Validators.required],
       familyname: ['', Validators.required],
     });
+
+
+   //If needed to observe any value we can use this as observable
+   /* this.checkinForm.valueChanges.subscribe((value) => {
+           
+    });*/
+
   }
 
   onCheckinDetailsSubmit(){ 
